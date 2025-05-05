@@ -29,4 +29,10 @@ describe('UserController (e2e)', () => {
       .delete('/api/users/1')
       .expect(200);
   });
+
+  it('/users/:id (DELETE) should return 404', async () => {
+    return await request(app.getHttpServer())
+      .delete('/api/users/999')
+      .expect(404);
+  });
 });

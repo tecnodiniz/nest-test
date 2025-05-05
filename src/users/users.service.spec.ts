@@ -18,18 +18,22 @@ describe('UsersService', () => {
   });
 
   // GET
-  it('it should return all users', () => {
+  it('should return all users', () => {
     const users = service.listAll();
     expect(users).toEqual([{ id: 1, name: 'Admin' }]);
   });
 
-  it('it should return a specific user', () => {
+  it('should return a specific user', () => {
     const users = service.getUser(1);
     expect(users).toEqual({ id: 1, name: 'Admin' });
   });
 
+  it('should throw NotFoundException if user not found on getUser', () => {
+    return expect(() => service.getUser(999)).toThrow(NotFoundException);
+  });
+
   // POST
-  it('it should create a new user', () => {
+  it('should create a new user', () => {
     const user = service.create('Eduardo');
     expect(user).toHaveProperty('id');
 
@@ -38,7 +42,7 @@ describe('UsersService', () => {
   });
 
   // DELETE
-  it('it should remove a user', () => {
+  it('should remove a user', () => {
     const user = service.create('Eduardo');
 
     service.remove(user.id);
@@ -46,7 +50,7 @@ describe('UsersService', () => {
     expect(users.find((u) => u.id === user.id)).toBe(undefined);
   });
 
-  it('it should throw NotFoundException if user not found on remove', () => {
+  it('should throw NotFoundException if user not found on remove', () => {
     expect(() => service.remove(999)).toThrow(NotFoundException);
   });
 });
