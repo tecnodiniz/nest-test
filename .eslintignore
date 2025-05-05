@@ -1,0 +1,10 @@
+# Ignorar arquivos e pastas de teste
+test/
+src/**/*.spec.ts
+src/**/*.e2e-spec.ts
+
+# Ignorar arquivos compilados
+dist/
+
+# Ignorar módulos de dependência
+node_modules/
