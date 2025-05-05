@@ -79,7 +79,23 @@
     "collectCoverageFrom": [
       "**/*.(t|j)s"
     ],
+    "collectCoverage": true,
     "coverageDirectory": "../coverage",
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "main.ts",
+      ".module.ts",
+      ".dto.ts",
+      ".controller.ts"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 80,
+        "functions": 80,
+        "lines": 80,
+        "statements": 80
+      }
+    }
   }
 }
